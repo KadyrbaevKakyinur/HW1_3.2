@@ -35,7 +35,7 @@ public class MainActivity extends AppCompatActivity {
             Intent intent = new Intent(this, SecondActivity.class);
             intent.putExtra("edit", editText.getText().toString());
             startActivity(intent);
-            
+
         });
     }
 }

@@ -43,7 +43,6 @@ public class SecondActivity extends AppCompatActivity {
 
         textView.setOnClickListener(view -> {
             Intent intent = new Intent(Intent.ACTION_CALL);
-            intent.setType("image/*");
             startActivity(intent);
         });
 
