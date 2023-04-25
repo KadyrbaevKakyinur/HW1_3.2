@@ -23,13 +23,6 @@ public class MainActivity extends AppCompatActivity {
 
         button = findViewById(R.id.send);
         editText = findViewById(R.id.edit_text);
- //       button.setOnClickListener(new View.OnClickListener() {
- //           @Override
- //           public void onClick(View view) {
- //               Intent intent = new Intent(MainActivity.this, SecondActivity.class);
- //               startActivity(intent);
- //           }
- //       });
 
         button.setOnClickListener(view -> {
             Intent intent = new Intent(this, SecondActivity.class);

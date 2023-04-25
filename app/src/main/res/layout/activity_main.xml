@@ -8,6 +8,7 @@
 
 
     <EditText
+        android:hint="number"
         android:id="@+id/edit_text"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"

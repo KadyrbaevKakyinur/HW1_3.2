@@ -10,55 +10,44 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.app.Activity;
 import android.content.Intent;
 import android.media.Image;
+import android.net.Uri;
 import android.os.Bundle;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
 public class SecondActivity extends AppCompatActivity {
 
     private TextView textView;
-    private ImageView imageView;
+    private String  phoneNamber;
+    private Button call_btn;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_second);
-
-
-        ActivityResultLauncher<Intent> result =
-                registerForActivityResult(new ActivityResultContracts.StartActivityForResult(),
-                        new ActivityResultCallback<ActivityResult>() {
-                    @Override
-                    public void onActivityResult(ActivityResult result) {
-                        imageView.setImageURI(result.getData().getData());
-                    }
-                });
-
-
-
+        call_btn= findViewById(R.id.call_btn);
         textView = findViewById(R.id.text_view);
-        imageView = findViewById(R.id.image_view);
+
+        Intent intent = getIntent();
+        phoneNamber = intent.getStringExtra("edit");
+        textView.setText(phoneNamber);
+
+
+
         String text = getIntent().getStringExtra("edit");
         textView.setText(text);
 
-        textView.setOnClickListener(view -> {
-            Intent intent = new Intent(Intent.ACTION_CALL);
-            startActivity(intent);
+        call_btn.setOnClickListener(view -> {
+            String phoneNumber = textView.getText().toString();
+            Intent intent2 = new Intent(Intent.ACTION_DIAL);
+            intent2.setData(Uri.parse("tel:"+phoneNumber));
+            startActivity(intent2);
         });
 
 
 
     }
-
-//    @Override
-//    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
-//        super.onActivityResult(requestCode, resultCode, data);
-//        if(resultCode == RESULT_OK){
-//            if(requestCode == 1){
-//            imageView.setImageURI(data.getData());
-//            }
-//        }
-//    }
 
 
 
